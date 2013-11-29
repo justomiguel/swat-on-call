@@ -1,0 +1,49 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.6.+'
+    }
+}
+apply plugin: 'android'
+
+repositories {
+    mavenCentral()
+}
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.0.0"
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 19
+    }
+    buildTypes {
+        release {
+            runProguard true
+            proguardFile getDefaultProguardFile('proguard-android-optimize.txt')
+        }
+    }
+    productFlavors {
+        defaultFlavor {
+            proguardFile 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+	compile 'com.android.support:appcompat-v7:+'
+    compile files('lib/activation.jar')
+    compile files('lib/additionnal.jar')
+    compile files('lib/mail.jar')
+    compile files('lib/commons-lang-2.4.jar')
+    compile files('lib/dsn.jar')
+    compile files('lib/gimap.jar')
+    compile files('lib/imap.jar')
+    compile files('lib/mailapi.jar')
+    compile files('lib/pop3.jar')
+    compile files('lib/smtp.jar')
+
+}
